@@ -1,0 +1,17 @@
+<div class="row rounded bg-white position-absolute w-100 pt-3" style="top:-100px">
+  <div class="col-md-6" *ngFor="let item of product">
+    <a [routerLink]="['admin', item.UrlEncode]"  class="no-link">
+      <div class="card mb-3" style="
+          background-image:url(./assets/img/banner.jpg);
+          background-position: center;
+          background-size: cover;
+          background-repeat: no-repeat;
+          height:275px">
+        <div class="card-body">
+            <h5 class="card-title text-white font-weight-light">{{item?.Produto}}</h5>
+            <p class="text-white font-weight-light">Subtítulo</p>
+        </div>
+      </div>
+    </a>
+  </div>
+</div>

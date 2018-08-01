@@ -1,0 +1,14 @@
+par-header-home  .btn_logout{
+    text-decoration: underline;
+    cursor: pointer;
+}
+.container_imagem{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color:#fff;
+  text-align: center;
+}
+.container_imagem i{
+  font-size: 40px;
+}

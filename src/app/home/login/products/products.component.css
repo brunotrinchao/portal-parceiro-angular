@@ -1,0 +1,8 @@
+par-products .card .card-title{
+  font-size: 25px;
+}
+
+par-products .no-link{
+  cursor: pointer;
+  text-decoration: none;
+}

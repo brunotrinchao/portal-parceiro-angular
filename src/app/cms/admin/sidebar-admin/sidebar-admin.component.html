@@ -1,0 +1,30 @@
+<nav>
+  <div class="sidebar-sticky" id="sidebar">
+    <small class="sidebar-heading d-flex justify-content-between mt-4 mb-2 text-muted">
+      NAVEGAÇÃO
+    </small>
+    <a [routerLink]="['./']" class="btn text-white">
+        <i class="fa fa-dashboard"></i> <span class="hidden-sm-down"> Dashboard </span>
+
+    </a>
+    <div class="list-group panel">
+        <div *ngFor="let item of sidebar; let i = index">
+          <a
+          href="#menu{{i}}"
+          class="list-group-item collapsed rounded mb-1"
+          data-toggle="collapse"
+          data-parent="#sidebar"
+          aria-expanded="false">
+            <i class="fa fa-circle"></i> <span class="hidden-sm-down"> {{item?.nome}} </span>
+          </a>
+          <ng-template [ngIf]="item.submenu">
+            <div class="collapse mb-1" id="menu{{i}}" *ngIf="item.submenu">
+                <a [routerLink]="'.'+subitem.url" [fragment]="item.nome" class="list-group-subitem rounded mt-1" *ngFor="let subitem of item.submenu;">{{subitem.nome}}</a>
+            </div>
+          </ng-template>
+        </div>
+    </div>
+
+
+  </div>
+</nav>

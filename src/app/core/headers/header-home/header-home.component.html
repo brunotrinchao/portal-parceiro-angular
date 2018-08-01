@@ -1,0 +1,50 @@
+<header>
+    <div class="jumbotron jumbotron-fluid my-0 py-0 position-relative">
+      <div class="container d-flex justify-content-between">
+        <nav class="navbar navbar-light position-absolute w-100" style="left:0;top:0">
+          <img src="./assets/img/logo_branca.png" style="max-height:75px">
+            <form class="form-inline" [formGroup]="loginForm" (submit)="logar()" *ngIf="!user; else login">
+              <div class="form-group mr-3">
+                <label class="sr-only">Login</label>
+                <input formControlName="email" type="text" class="form-control form-control-sm" placeholder="Login" focusauto>
+                <!--<par-message
+                  text="Campo obrigatório"
+                  *ngIf="loginForm.get('email').erros?.required"></par-message>-->
+              </div>
+              <div class="form-group mr-3">
+                <label for="inputPassword2" class="sr-only">Senha</label>
+                <input formControlName="password" type="password" class="form-control form-control-sm" placeholder="Password">
+                <!--<par-message
+                  text="Campo obrigatório"
+                  *ngIf="loginForm.get('password').erros?.required"></par-message>-->
+              </div>
+              <button type="submit" class="btn btn-primary btn-sm" [disabled]="loginForm.invalid">OK</button>
+            </form>
+            <ng-template #login>
+              <div class="text-white">
+                  Olá, {{user?.Nome}}<br>
+                  <a class="pull-right ml-2 btn-link btn_logout" (click)="logout()">Sair</a>
+              </div>
+            </ng-template>
+        </nav>
+      </div>
+      <div class="container-fluid container_imagem" style="
+        background-image:url(./assets/img/banner.jpg);
+        height: 700px;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;">
+          <div *ngIf="!user; else showProduto">
+            <h1 class="font-weight-light">Seja bem vindo ao portal do parceiro</h1>
+          </div>
+          <ng-template #showProduto>
+            <h1 class="font-weight-light">
+              Selecione um produto<br>
+              <i class="fa fa-angle-down d-block"></i>
+            </h1>
+
+          </ng-template>
+      </div>
+    </div>
+  </header>
+
