@@ -8,12 +8,13 @@ export class ImovelComponent implements OnInit {
 
   sidebar: Object[] = [
       {
+        "id": 1,
         "nome": "Proprietário",
         "url": null,
         "submenu": [
           {
             "nome": "Comprar/Alugar",
-            "url": "proprietário/novo"
+            "url": "proprietario/novo"
           },
           {
             "nome": "Listar",
@@ -22,6 +23,7 @@ export class ImovelComponent implements OnInit {
         ]
       },
       {
+        "id": 1,
         "nome": "Interessado",
         "url": null,
         "submenu": [
