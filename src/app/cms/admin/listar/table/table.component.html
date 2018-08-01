@@ -1,43 +1,42 @@
-<table class="table" [mfData]="lista[0]" #mf="mfDataTable" [mfRowsOnPage]="25">
-  <thead class="thead-dark">
-    <tr>
-        <th style="max-width: 100%">
-            <mfDefaultSorter by="name">Nome</mfDefaultSorter>
-        </th>
-        <th>
-            <mfDefaultSorter by="email">E-mail</mfDefaultSorter>
-        </th>
-        <th>
-            <mfDefaultSorter by="telefone">Telefone</mfDefaultSorter>
-        </th>
-        <th>
-            <mfDefaultSorter by="celular">Celular</mfDefaultSorter>
-        </th>
-        <th>
-            <mfDefaultSorter by="status">Status</mfDefaultSorter>
-        </th>
-    </tr>
+<table class="table" [mfData]="lista[0]" #mf="mfDataTable" [mfRowsOnPage]="1">
+    <thead class="thead-dark">
+        <tr>
+            <th style="max-width: 100%">
+                <mfDefaultSorter by="name">Nome</mfDefaultSorter>
+            </th>
+            <th>
+                <mfDefaultSorter by="email">E-mail</mfDefaultSorter>
+            </th>
+            <th>
+                <mfDefaultSorter by="telefone">Telefone</mfDefaultSorter>
+            </th>
+            <th>
+                <mfDefaultSorter by="celular">Celular</mfDefaultSorter>
+            </th>
+            <th>
+                <mfDefaultSorter by="status">Status</mfDefaultSorter>
+            </th>
+        </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let item of mf.data">
-        <td>
-          <a class="btn btn-link" (click)="getItem(item)" data-toggle="modal" data-target="#myModal">{{item.Cliente?.Nome}}</a>
-        </td>
-        <td>{{item.Cliente?.Email}}</td>
-        <td>{{item.Cliente?.Celular}}</td>
-        <td>{{item.Cliente?.Telefone}}</td>
-        <td>
-          <par-status [statusObj]="item.StatusProspect"></par-status>
-        </td>
-    </tr>
+        <tr *ngFor="let item of mf.data">
+            <td>
+                <a class="btn btn-link" (click)="getItem(item)" data-toggle="modal" data-target="#myModal">{{item.Cliente?.Nome}}</a>
+            </td>
+            <td>{{item.Cliente?.Email}}</td>
+            <td>{{item.Cliente?.Celular}}</td>
+            <td>{{item.Cliente?.Telefone}}</td>
+            <td>
+                <par-status [statusObj]="item.StatusProspect"></par-status>
+            </td>
+        </tr>
     </tbody>
     <tfoot>
-    <tr>
-        <td colspan="5">
-            <mfBootstrapPaginator ></mfBootstrapPaginator>
-        </td>
-    </tr>
+        <tr>
+            <td colspan="5">
+                <mfBootstrapPaginator></mfBootstrapPaginator>
+            </td>
+        </tr>
     </tfoot>
 </table>
-<par-modal (messageEvent)="receiveMessage($event)"></par-modal>
-
+<par-modal (messageEventFunc)="receiveMessage($event)"></par-modal>

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { TableService } from './table.service';
 
 @Component({
   selector: 'par-table',
@@ -9,10 +10,9 @@ export class TableComponent implements OnInit {
 
   @Input() header;
   @Input() lista = [];
-  @Output() messageEvent = new EventEmitter<Object>();
   detalhes: Object;
 
-  constructor() {
+  constructor(private tableService: TableService) {
     // console.log(this.lista);
   }
 
@@ -22,7 +22,13 @@ export class TableComponent implements OnInit {
 
   getItem(item: Object){
     this.detalhes = item;
-    this.messageEvent.emit(item);
+    this.messageEventFunc();
   }
+
+  messageEventFunc(){
+    this.tableService.sendEvent(this.detalhes);
+  }
+
+
 
 }

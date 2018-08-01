@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, OnChanges, EventEmitter, Output } from '@angular/core';
+import { TableService } from '../table/table.service';
 
 @Component({
   selector: 'par-modal',
@@ -10,7 +11,12 @@ export class ModalComponent implements OnInit {
   @Input() obj;
   item = {};
 
-  constructor() {
+  constructor(private tableService: TableService) {
+    tableService.messageEvent.subscribe(item => {
+      this.item = item;
+      console.log(item);
+
+    });
   }
 
   ngOnInit() {
@@ -19,7 +25,6 @@ export class ModalComponent implements OnInit {
 
   receiveMessage($event) {
     console.log($event);
-    this.item = $event
   }
 
 }
