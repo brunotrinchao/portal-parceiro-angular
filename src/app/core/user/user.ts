@@ -7,5 +7,9 @@ export interface User{
   Bloqueado: boolean,
   LoginAtivo: boolean,
   DataBloqueio: string,
-  EhMaster: boolean
+  EhMaster: boolean,
+  Parceiro: {
+    id: number,
+    Nome: string
+  }
 }

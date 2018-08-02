@@ -14,7 +14,12 @@
                 </a>
                 <ng-template [ngIf]="item.submenu">
                     <div class="collapse mb-1" id="menu{{i}}" *ngIf="item.submenu">
-                        <a [routerLink]="['.'+subitem.url]" [fragment]="item.nome" [queryParams]="{produto: item.id}" class="list-group-subitem rounded mt-1" *ngFor="let subitem of item.submenu;">{{subitem.nome}}</a>
+                        <a
+                        [routerLink]="['.'+subitem.url]"
+                        [fragment]="item.nome"
+                        [queryParams]="{produto: item.id}"
+                        class="list-group-subitem rounded mt-1"
+                        *ngFor="let subitem of item.submenu;">{{subitem.nome}}</a>
                     </div>
                 </ng-template>
             </div>

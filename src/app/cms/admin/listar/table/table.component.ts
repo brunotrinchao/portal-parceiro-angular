@@ -9,7 +9,7 @@ import { TableService } from './table.service';
 export class TableComponent implements OnInit {
 
   @Input() header;
-  @Input() lista = [];
+  @Input() lista;
   detalhes: Object;
 
   constructor(private tableService: TableService) {
@@ -20,7 +20,8 @@ export class TableComponent implements OnInit {
     // console.log(this.lista);
   }
 
-  getItem(item: Object){
+  getItem(event, item: Object){
+    console.log(event);
     this.detalhes = item;
     this.messageEventFunc();
   }

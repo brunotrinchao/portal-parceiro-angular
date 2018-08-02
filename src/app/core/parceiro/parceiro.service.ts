@@ -16,36 +16,15 @@ export class ParceiroService{
     }
   }
 
-  setToken(token: Object){
-    this.tokenService.setToken(token);
-    this.decodeAndNotify();
-  }
-
-  getToken(){
-    this.tokenService.getToken();
-  }
-
   getParceiro(){
     return this.parceiroSubject.asObservable();
   }
 
   private decodeAndNotify(){
     const token = this.tokenService.getToken();
-    const parceiro = token as Parceiro;
+    const parceiro = token.Parceiro as Parceiro;
     this.parceiroSubject.next(parceiro);
   }
 
-  logout(){
-    this.tokenService.removeToken();
-    this.parceiroSubject.next(null);
-  }
-
-  isLogged(){
-    return this.tokenService.hasToken();
-  }
-
-  concatToken(token: Object){
-    return this.tokenService.concatToken(token)
-  }
 
 }

@@ -6,11 +6,75 @@
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-4">{{item.Cliente?.Nome}}</div>
+                    <ul class="nav nav-tabs" role="tablist">
+                      <li class="nav-item">
+                        <a class="nav-link active" href="#dados_pessoais" role="tab" data-toggle="tab">Dados pessoais</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#indicacao" role="tab" data-toggle="tab">Indicação</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#observacao" role="tab" data-toggle="tab">Observação</a>
+                      </li>
+                    </ul>
+                    <div class="tab-content">
+                      <div role="tabpanel" class="tab-pane fade in active show py-3 px-3" id="dados_pessoais">
+                        <div class="row">
+                          <div class="col-md-5"><p><b>Nome:</b> {{item.Cliente?.Nome}}</p></div>
+                          <div class="col-md-5"><p><b>E-mail:</b> {{item.Cliente?.Email}}</p></div>
+                          <div class="col-md-2"><p><b>Sexo:</b> {{item.Cliente?.Sexo}}</p></div>
+                          <div class="col-md-4">
+                            <p><b *ngIf="item.Cliente?.PJ else elseCpf">CNPJ:</b>
+                            <ng-template #elseCpf><b>CPF:</b></ng-template>
+                              {{item.Cliente?.CpfCnpj}}</p>
+                          </div>
+                          <div class="col-md-4" *ngIf="item.Cliente?.PJ"><p><b>Número de funcionários:</b> {{item.Cliente?.NumeroFuncionarios}}</p></div>
+                          <div class="col-md-4"><p><b>Telefone:</b> {{item.Cliente?.Telefone}}</p></div>
+                          <div class="col-md-4"><p><b>Celular:</b> {{item.Cliente?.Celular}}</p></div>
+                          <div class="col-md-auto"><p><b>Contato:</b> {{item.Cliente?.Contato}}</p></div>
+                        </div>
+                        <h5 class="card-subtitle mb-2 mt-3 text-muted">Endereço</h5>
+                        <div class="row">
+                            <div class="col-md-10"><p><b>Endereço:</b> {{item.Cliente?.Endereco}}</p></div>
+                            <div class="col-md-2"><p><b>N:</b> {{item.Cliente?.Numero}}</p></div>
+                            <div class="col-md-4"><p><b>Bairro:</b> {{item.Cliente?.Bairro.Nome}}</p></div>
+                            <div class="col-md-auto"><p><b>Cidade/UF:</b> {{item.Cliente?.Bairro.Cidade.Nome}}/{{item.Cliente?.Bairro.Cidade.UF}}</p></div>
+                            <div class="col-md-3"><p><b>Cep:</b> {{item.Cliente?.Cep}}</p></div>
+                            <div class="col-md-12"><p><b>Complemento:</b> {{item.Cliente?.Complemento}}</p></div>
+                        </div>
+                      </div>
+                      <div role="tabpanel" class="tab-pane fade py-3 px-3" id="indicacao">
+                        <div *ngIf="!isEmptyObject(item.Cliente?.DetalhesIndicacaoImovel)">
+                            <div *ngFor="let itemImovel of item.Cliente?.DetalhesIndicacaoImovel">
+                              <div class="row">
+                                  <div class="col-md-4"><p><b>Bem:</b> {{itemImovel?.Bem}}</p></div>
+                                  <div class="col-md-4"><p><b>Uso:</b> {{itemImovel?.TipoUso}}</p></div>
+                                  <div class="col-md-4"><p><b>Cliente:</b> {{itemImovel?.TipoCliente}}</p></div>
+                                  <div class="col-md-4"><p><b>Operação:</b> {{itemImovel?.TipoOperacao}}</p></div>
+                                  <div class="col-md-4"><p><b>Valor do bem:</b> {{itemImovel?.ValorBem}}</p></div>
+                                  <div class="col-md-12"><p><b>Status:</b> {{item.StatusProspect?.Descricao}}</p></div>
+                              </div>
+                              <h5 class="card-subtitle mb-2 mt-3 text-muted">Bairros preferênciais</h5>
+                              <div class="row">
+                                  <div class="col-md-4"><p><b>Bairro 1:</b> {{itemImovel?.PrimeiroBairroPreferencia}}</p></div>
+                                  <div class="col-md-4"><p><b>Bairro 2:</b> {{itemImovel?.SegundoBairroPreferencia}}</p></div>
+                                  <div class="col-md-4"><p><b>Bairro 3:</b> {{itemImovel?.TerceiroBairroPreferencia}}</p></div>
+                              </div>
+                            </div>
+                            </div>
+                            <div *ngIf="!isEmptyObject(item.Cliente?.DetalhesIndicacaoFinanciamentos)">
+                            Financiamento
+                            </div>
+                            <div *ngIf="!isEmptyObject(item.Cliente?.DetalhesIndicacaoConsorcios)">
+                            Consórcio
+                            </div>
+                      </div>
+                      <div role="tabpanel" class="tab-pane fade in active show py-3 px-3" id="observacao">
+                          <div class="row">
+                            <div class="col-md-5"><p>{{item?.Cliente?.Observacao}}</p></div>
+                          </div>
+                        </div>
                     </div>
-                </div>
             </div>
         </div>
     </div>
